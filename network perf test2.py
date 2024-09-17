@@ -1,4 +1,7 @@
 import speedtest
+import time
+TrackSpeeds = []
+
 
 def test_network_performance():
     st = speedtest.Speedtest()
@@ -9,6 +12,19 @@ def test_network_performance():
     print(f"Download Speed: {download_speed:.2f} Mbps")
     print(f"Upload Speed: {upload_speed:.2f} Mbps")
     print(f"Ping: {ping} ms")
+    TrackSpeeds.append(download_speed)
+    print()
 
 if __name__ == "__main__":
-    test_network_performance()
+    for i in range(0,5):
+        test_network_performance()
+        time.sleep(60)
+
+print()
+print("Track Speeds \n")
+print(TrackSpeeds)
+print("Minimum performance:")
+min(TrackSpeeds)
+print()
+print("Max Performance")
+max(TrackSpeeds)
